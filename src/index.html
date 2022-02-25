@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Boreas online thermostat</title>
+    <script src="/static/tailwind-3.0.23.min.js"></script>
+</head>
+<body>
+    <div class="max-w-xl mx-auto space-y-4 px-4">
+        <div class="text-2xl p-4 text-center">
+            Boreas online thermostat
+        </div>
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Current status</h3>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+                <dl class="sm:divide-y sm:divide-gray-200">
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Last update</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="last-updated">never</dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Current temperature</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="current-temp"></dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Target temperature</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="target-temp"></dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Heating</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="heating"></dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Relay</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" id="relay"></dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" id="btn-update">Go to protected environment</button>
+    </div>
+    <script src="/static/script-index.js"></script>
+</body>
+</html>

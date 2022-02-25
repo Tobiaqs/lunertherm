@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: ./src
+    command: flask run --host 0.0.0.0
+    init: true
+    restart: unless-stopped
+    environment:
+      - VIRTUAL_HOST
+      - LETSENCRYPT_HOST=${VIRTUAL_HOST}
+      - FLASK_APP=web
+      - SIM_ICCID
+      - LUNER_API_TOKEN
+      - COMM_TOKEN
+      - USERNAME
+      - PASSWORD
+    expose:
+      - 5000
+    volumes:
+      - ./src/:/app/
+    networks:
+      - app
+      - proxy_lunertherm
+
+  udp:
+    build:
+      context: ./src
+    command: python /app/udp.py
+    init: true
+    restart: unless-stopped
+    environment:
+      - COMM_TOKEN
+    ports:
+      - "5190:5190/udp"
+    volumes:
+      - ./src/:/app/
+    networks:
+      - app
+
+networks:
+  app:
+  proxy_lunertherm:
+    external: true
