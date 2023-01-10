@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
             relay.innerText = response.relay ? 'ON' : 'OFF'
             if (response.updated) {
                 const date = new Date(response.updated + 'Z')
-                lastUpdated.innerText = date.toISOString().split('T')[0].split('-').reverse().join('-') + ' ' + date.toISOString().split('T')[1].substring(0, 8)
+                lastUpdated.innerText = date.toLocaleString('nl-NL')
             } else {
                 lastUpdated.innerText = 'never'
             }
