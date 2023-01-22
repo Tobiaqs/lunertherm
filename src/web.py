@@ -131,7 +131,7 @@ def send_timer():
 
     return 'ok'
 
-@app.route("/send/thermostat_enabled", methods=['POST'])
+@app.route("/send/thermostat", methods=['POST'])
 @auth.login_required
 def send_thermostat_enabled():
     global last_send

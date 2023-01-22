@@ -109,6 +109,22 @@ window.addEventListener('load', () => {
         }
     })
 
+    btnThermostat.addEventListener('click', () => {
+        if (confirm('Are you sure?')) {
+            const thermostatValue = thermostat.classList.contains('bg-green-600')
+            fetch('/send/thermostat', { method: 'POST', body: thermostatValue ? '1' : '0' }).then((response) => response.text()).then((response) => {
+                if (response === 'ok') {
+                    alert('Great success')
+                    location.href = '/'
+                } else if (response === 'not ok') {
+                    alert('Please wait one minute before sending another command')
+                } else {
+                    alert('An error occurred')
+                }
+            })
+        }
+    })
+
     document.getElementById('btn-request-update').addEventListener('click', () => {
         fetch('/request_update', { method: 'POST' }).then((response) => response.text()).then((response) => {
             if (response === 'ok') {
