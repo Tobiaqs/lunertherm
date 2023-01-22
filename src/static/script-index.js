@@ -16,11 +16,16 @@ window.addEventListener('load', () => {
             thermostat.innerText = response.thermostat ? 'ENABLED' : 'DISABLED'
             timer.innerText = response.timer ? 'ENABLED' : 'DISABLED'
 
-            if (response.timer_millis < response.now) {
-                response.timer_millis += 4294967295
-            }
+            if (response.timer) {
+                if (response.timer_millis < response.now) {
+                    response.timer_millis += 4294967295
+                }
 
-            timerRemaining.innerText = (Math.round((response.timer_millis - response.now) / 6000) / 10) + ' minutes'
+                timerRemaining.innerText = (Math.round((response.timer_millis - response.now) / 6000) / 10) + ' minutes'
+            } else {
+                timerRemaining.innerText = 'N/A'
+            }
+            
             relay.innerText = response.relay ? 'ON' : 'OFF'
             if (response.updated) {
                 const date = new Date(response.updated + 'Z')
